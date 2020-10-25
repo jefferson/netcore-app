@@ -9,13 +9,13 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug'">
-    <Copy SourceFiles="E:\Projetos\web\netcore-configmap\des\appsettings.json" DestinationFolder="$(ProjectDir)/configmap" />
+    <ItemGroup>
+      <appsettings Include="E:\Projetos\web\netcore-configmap\des\appsettings.json"/>
+      <configmap Include="$(ProjectDir)/configmap" />
+    </ItemGroup>
+    <RemoveDir Directories="@(configmap)" />
+    <Copy SourceFiles="@(appsettings)" DestinationFolder="@(configmap)" />
     <Message Text="Arquivo de configuração copiado"/>
   </Target>
-
-  <!--<Target Name="PreBuild" AfterTargets="Clean" Condition="'$(Configuration)'=='Debug'">
-    <RemoveDir Directories="$(ProjectDir)/configmap" />
-    <Message Text="Arquivo de configuração deletado"/>
-  </Target>-->
 
 </Project>
