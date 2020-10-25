@@ -448,6 +448,9 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
+bin/
+obj/
+
 
 configmap/
 *appsettings.json
