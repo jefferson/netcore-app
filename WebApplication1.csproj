@@ -5,17 +5,23 @@
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
-    <ItemGroup>
-      <appsettings Include="./netcore-configmap/des/appsettings.json" />
-      <configmap Include="$(ProjectDir)/configmap" />
-    </ItemGroup>
-    <RemoveDir Directories="@(configmap)" />
-    <Message Text="--> Os: $(OS)" Importance="high"/>
-    <Message Text="--> Configuration: $(Configuration)" Importance="high"/>
+    
+    <PropertyGroup>
+      <appsettings>./netcore-configmap/des/appsettings.json</appsettings>
+      <configmap>$(ProjectDir)/configmap</configmap>
+      <configmapRepository>https://github.com/jefferson/netcore-configmap</configmapRepository>
+    </PropertyGroup>
 
-    <Message Text="--> Arquivo de configuração removido $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
-    <Copy SourceFiles="@(appsettings)" DestinationFolder="@(configmap)" />
-    <Message Text="--> Arquivo de configuração copiado $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
+    <Exec Command="git clone $(configmapRepository)" Condition="!Exists($(appsettings))" />
+    <Message Text="--&gt; Os: $(OS)" Importance="high" />
+    <Message Text="--&gt; Configuration: $(Configuration)" Importance="high" />
+
+    <RemoveDir Directories="$(configmap)" />
+    <Message Text="--&gt; Arquivo de configuração removido $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
+    
+    <Copy SourceFiles="$(appsettings)" DestinationFolder="$(configmap)" />
+    <Message Text="--&gt; Arquivo de configuração copiado $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
+    
   </Target>
 
   <ItemGroup>
@@ -28,5 +34,7 @@
     <None Remove="configmap\**" />
     <None Remove="netcore-configmap\**" />
   </ItemGroup>
+
+ 
   
 </Project>
