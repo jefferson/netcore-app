@@ -4,18 +4,29 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants></DefineConstants>
-  </PropertyGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug'">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
     <ItemGroup>
-      <appsettings Include="E:\Projetos\web\netcore-configmap\des\appsettings.json"/>
+      <appsettings Include="./netcore-configmap/des/appsettings.json" />
       <configmap Include="$(ProjectDir)/configmap" />
     </ItemGroup>
     <RemoveDir Directories="@(configmap)" />
+    <Message Text="--> Os: $(OS)" Importance="high"/>
+    <Message Text="--> Configuration: $(Configuration)" Importance="high"/>
+
+    <Message Text="--> Arquivo de configuração removido $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
     <Copy SourceFiles="@(appsettings)" DestinationFolder="@(configmap)" />
-    <Message Text="Arquivo de configuração copiado"/>
+    <Message Text="--> Arquivo de configuração copiado $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
   </Target>
 
+  <ItemGroup>
+    <Compile Remove="configmap\**" />
+    <Compile Remove="netcore-configmap\**" />
+    <Content Remove="configmap\**" />
+    <Content Remove="netcore-configmap\**" />
+    <EmbeddedResource Remove="configmap\**" />
+    <EmbeddedResource Remove="netcore-configmap\**" />
+    <None Remove="configmap\**" />
+    <None Remove="netcore-configmap\**" />
+  </ItemGroup>
+  
 </Project>
