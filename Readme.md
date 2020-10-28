@@ -26,7 +26,9 @@ Isto inclui:
 - Valores por deploy como o nome canônico do host para o deploy.
 
 Nesta aplicação os arquivos de configuração serão salvos separadamente em outro repositório e será tratado como
-submódulo para que cada arquivo de configuração possa ser versionamento separadamente em cada ambiente.
+submódulo, através do git, para que cada arquivo de configuração possa ser versionamento separadamente em cada ambiente como uma solução simples.
+
+Observer que dentro do arquivo `[Library.Api.csproj](./Library.Api.csproj)` há uma TargetGroup descrevendo a diretativa de inservação do arquivo de configuração no ambiente de desenvolvimento.
 
 Permitindo que no momento da instalação cada aplicação possa baixar o seu módulo separadamente.
 
