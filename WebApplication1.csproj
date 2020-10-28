@@ -7,12 +7,12 @@
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
     
     <PropertyGroup>
-      <appsettings>./netcore-configmap/des/appsettings.json</appsettings>
+      <appsettings>./netcore-configmap/local/appsettings.json</appsettings>
       <configmap>$(ProjectDir)/configmap</configmap>
       <configmapRepository>https://github.com/jefferson/netcore-configmap</configmapRepository>
     </PropertyGroup>
 
-    <Exec Command="git clone $(configmapRepository)" Condition="!Exists($(appsettings))" />
+    <Exec Command="git clone $(configmapRepository) -b develop" Condition="!Exists($(appsettings))" />
     <Message Text="--&gt; Os: $(OS)" Importance="high" />
     <Message Text="--&gt; Configuration: $(Configuration)" Importance="high" />
 
