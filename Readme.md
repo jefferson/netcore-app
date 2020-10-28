@@ -30,11 +30,20 @@ submódulo, através do git, para que cada arquivo de configuração possa ser versi
 
 Observer que dentro do arquivo [Library.Api.csproj](./Library.Api.csproj) há uma TargetGroup descrevendo a diretativa de inservação do arquivo de configuração no ambiente de desenvolvimento.
 
+Os arquivos de configuração serão segregados por ambiente e disponibilizados na pasta ```configmap``.
+
+Os ambientes serão os seguintes:
+- local: máquina do desenvolvedor
+- dev: servidor de desenvolvimento
+- hml: servidor de homologação
+- prd: servidor de produção
+
 Permitindo que no momento da instalação cada aplicação possa baixar o seu módulo separadamente. Os eventos descritos no arquivos de configuração acima são os seguintes:
 
-Evento | descricao
--------|----------
-Build | 
+id| Evento | descricao
+--| -------|----------
+1 | Build  | Remover arquivo de configuração atual
+2 | Build  | Copiar arquivo local de desenvolvimento para o diretório da aplicação
 
 [Click here to visit configmap](https://github.com/jefferson/netcore-configmap)
 
