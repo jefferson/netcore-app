@@ -30,6 +30,6 @@ submódulo para que cada arquivo de configuração possa ser versionamento separada
 
 Permitindo que no momento da instalação cada aplicação possa baixar o seu módulo separadamente.
 
-[Click here to visit configmap](../netcore-configmap)
+[Click here to visit configmap](https://github.com/jefferson/netcore-configmap)
 
 [Click here for read more about section Configuration on 12factor.](https://12factor.net/pt_br/config)
