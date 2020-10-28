@@ -20,7 +20,7 @@ namespace WebApplication1
             Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hosting, config) =>
             {
-                config.AddJsonFile("./configmap/appsettings.json", optional: false, reloadOnChange: true);
+                config.AddJsonFile("./configmap/appsettings.json", optional: true, reloadOnChange: true); config.AddJsonFile("./configmap/appsettings.json", optional: false, reloadOnChange: true);
             })
             .ConfigureWebHostDefaults(webBuilder =>
             {

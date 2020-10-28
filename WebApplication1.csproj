@@ -7,19 +7,18 @@
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
     
     <PropertyGroup>
-      <appsettings>./netcore-configmap/local/appsettings.json</appsettings>
+      <localAppsettings>./configmap/local/appsettings.json</localAppsettings>
+      <tempAppsettings>./configmap/appsettings.json</tempAppsettings>
       <configmap>$(ProjectDir)/configmap</configmap>
-      <configmapRepository>https://github.com/jefferson/netcore-configmap</configmapRepository>
     </PropertyGroup>
 
-    <Exec Command="git clone $(configmapRepository) -b develop" Condition="!Exists($(appsettings))" />
     <Message Text="--&gt; Os: $(OS)" Importance="high" />
     <Message Text="--&gt; Configuration: $(Configuration)" Importance="high" />
 
-    <RemoveDir Directories="$(configmap)" />
+    <Delete Files="$(tempAppsettings)" />
     <Message Text="--&gt; Arquivo de configuração removido $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
     
-    <Copy SourceFiles="$(appsettings)" DestinationFolder="$(configmap)" />
+    <Copy SourceFiles="$(localAppsettings)"  DestinationFolder="$(configmap)" />
     <Message Text="--&gt; Arquivo de configuração copiado $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
     
   </Target>
