@@ -1,0 +1,3 @@
+[submodule "netcore-configmap"]
+	path = netcore-configmap
+	url = https://github.com/jefferson/netcore-configmap
