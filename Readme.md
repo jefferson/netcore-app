@@ -30,7 +30,7 @@ submódulo, através do git, para que cada arquivo de configuração possa ser versi
 
 Observer que dentro do arquivo [Library.Api.csproj](./Library.Api.csproj) há uma TargetGroup descrevendo a diretativa de inservação do arquivo de configuração no ambiente de desenvolvimento.
 
-Os arquivos de configuração serão segregados por ambiente e disponibilizados na pasta ```configmap``.
+Os arquivos de configuração serão segregados por ambiente e disponibilizados na pasta ```configmap```.
 
 Os ambientes serão os seguintes:
 - local: máquina do desenvolvedor
