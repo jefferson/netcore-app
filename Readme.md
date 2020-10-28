@@ -25,4 +25,9 @@ Isto inclui:
 - Credenciais para serviços externos como Amazon S3 ou Twitter
 - Valores por deploy como o nome canônico do host para o deploy.
 
-[Leia mais em sobre as configurações 12factor em:](https://12factor.net/pt_br/config)
+Nesta aplicação os arquivos de configuração serão salvos separadamente em outro repositório e será tratado como
+submódulo para que cada arquivo de configuração possa ser versionamento separadamente em cada ambiente.
+
+Permitindo que no momento da instalação cada aplicação possa baixar o seu módulo separadamente.
+
+[Click here for read more about section Configuration on 12factor.](https://12factor.net/pt_br/config)
