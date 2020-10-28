@@ -450,8 +450,3 @@ msbuild.wrn
 
 bin/
 obj/
-netcore-configmap
-
-
-configmap/
-*appsettings.json
