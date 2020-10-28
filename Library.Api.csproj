@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
+    
+    <PropertyGroup>
+      <localAppsettings>./configmap/local/appsettings.json</localAppsettings>
+      <tempAppsettings>./configmap/appsettings.json</tempAppsettings>
+      <configmap>$(ProjectDir)\configmap</configmap>
+    </PropertyGroup>
+    <Message Text="--&gt; ========== start updating config $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
+
+    <Delete Files="$(tempAppsettings)" />
+    <Message Text="--&gt; Arquivo de configuração removido" Importance="high" />
+    
+    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" />
+    <Message Text="--&gt; Arquivo de configuração copiado" Importance="high" />
+
+    <Message Text="--&gt; Os: $(OS)" Importance="high" />
+    <Message Text="--&gt; Configuration: $(Configuration)" Importance="high" />
+    
+    <Message Text="--&gt; Arquivo de configuração utilizado: $(localAppsettings)" Importance="high" />
+    <Message Text="--&gt; Diretório do arquivo de configuração: $(configmap)" Importance="high" />
+    <Message Text="--&gt; ========== finish updating $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
+
+
+  </Target>
+
+  <!-- Remove from build and publish events -->
+  <ItemGroup>
+    <Content Update="configmap\**\*.*" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+  
+  <!-- Remove from visual studio directory -->
+  <ItemGroup>
+    <Content Remove="configmap\appsettings.json" />
+  </ItemGroup>
+
+</Project>

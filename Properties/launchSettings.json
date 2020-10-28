@@ -13,10 +13,11 @@
       "commandName": "IISExpress",
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_ENVIRONMENT_DEPLOY": "local"
       }
     },
-    "WebApplication1": {
+    "Library.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
