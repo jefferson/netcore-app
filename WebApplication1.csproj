@@ -18,22 +18,9 @@
     <Delete Files="$(tempAppsettings)" />
     <Message Text="--&gt; Arquivo de configuração removido $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
     
-    <Copy SourceFiles="$(localAppsettings)"  DestinationFolder="$(configmap)" />
+    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" />
     <Message Text="--&gt; Arquivo de configuração copiado $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
     
   </Target>
-
-  <ItemGroup>
-    <Compile Remove="configmap\**" />
-    <Compile Remove="netcore-configmap\**" />
-    <Content Remove="configmap\**" />
-    <Content Remove="netcore-configmap\**" />
-    <EmbeddedResource Remove="configmap\**" />
-    <EmbeddedResource Remove="netcore-configmap\**" />
-    <None Remove="configmap\**" />
-    <None Remove="netcore-configmap\**" />
-  </ItemGroup>
-
- 
   
 </Project>
