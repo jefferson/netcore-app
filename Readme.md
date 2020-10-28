@@ -38,7 +38,7 @@ Os ambientes serão os seguintes:
 - hml: servidor de homologação
 - prd: servidor de produção
 
-Permitindo que no momento da instalação cada aplicação possa baixar o seu módulo separadamente. Os eventos descritos no arquivos de configuração acima são os seguintes:
+Permitindo que no momento da instalação cada aplicação possa baixar o seu arquivo de configuração separadamente. Os eventos descritos no arquivos de configuração acima são os seguintes:
 
 id| Evento | descricao
 --| -------|----------
