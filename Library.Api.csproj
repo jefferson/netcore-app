@@ -13,10 +13,10 @@
     </PropertyGroup>
     <Message Text="--&gt; ========== start updating config $([System.DateTime]::Now.ToString(yyyy-MM-dd-mm-ss.fff))" Importance="high" />
 
-    <Delete Files="$(tempAppsettings)" />
+    <Delete Files="$(tempAppsettings)" Condition="Exists($(tempAppsettings))" />
     <Message Text="--&gt; Arquivo de configuração removido" Importance="high" />
     
-    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" />
+    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" Condition="Exisits($(localAppsettings))" />
     <Message Text="--&gt; Arquivo de configuração copiado" Importance="high" />
 
     <Message Text="--&gt; Os: $(OS)" Importance="high" />
