@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug' AND $(OS.StartsWith('Windows')) ">
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)'=='Debug'">
     
     <PropertyGroup>
       <localAppsettings>./configmap/local/appsettings.json</localAppsettings>
@@ -16,7 +16,7 @@
     <Delete Files="$(tempAppsettings)" Condition="Exists($(tempAppsettings))" />
     <Message Text="--&gt; Arquivo de configuração removido" Importance="high" />
     
-    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" Condition="Exisits($(localAppsettings))" />
+    <Copy SourceFiles="$(localAppsettings)" DestinationFolder="$(configmap)" Condition="Exists($(localAppsettings))" />
     <Message Text="--&gt; Arquivo de configuração copiado" Importance="high" />
 
     <Message Text="--&gt; Os: $(OS)" Importance="high" />
